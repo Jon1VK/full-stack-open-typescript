@@ -1,0 +1,13 @@
+.part {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+}
+
+.part__name {
+  font-weight: bold;
+}
+
+.part__description {
+  font-style: italic;
+}
