@@ -1,10 +1,4 @@
-import {
-  Discharge,
-  EntryType,
-  Gender,
-  HealthCheckRating,
-  SickLeave,
-} from "../../types";
+import { Discharge, EntryType, Gender, HealthCheckRating } from "../types";
 
 export const isString = (value: unknown): value is string => {
   return typeof value === "string" || value instanceof String;
@@ -12,10 +6,6 @@ export const isString = (value: unknown): value is string => {
 
 export const isObject = (value: unknown): value is Record<string, unknown> => {
   return value instanceof Object;
-};
-
-export const isStringArray = (value: unknown): value is string[] => {
-  return Array.isArray(value) && value.every((element) => isString(element));
 };
 
 export const isDate = (value: unknown): value is string => {
@@ -41,13 +31,5 @@ export const isHealthCheckRating = (value: any): value is HealthCheckRating => {
 };
 
 export const isDischarge = (value: unknown): value is Discharge => {
-  return isObject(value) && isDate(value.date) && isString(value.criteria);
-};
-
-export const isSickLeave = (value: unknown): value is SickLeave => {
-  return (
-    isObject(value) &&
-    ((value.startDate === "" && value.endDate === "") ||
-      (isDate(value.startDate) && isDate(value.endDate)))
-  );
+  return isObject(value) && isString(value.date) && isString(value.criteria);
 };

@@ -1,3 +1,14 @@
+export type DistributiveOmit<
+  T,
+  K extends string | number | symbol
+> = T extends unknown ? Omit<T, K> : never;
+
+export type UnionToIntersection<U> = (
+  U extends unknown ? (k: U) => void : never
+) extends (k: infer I) => void
+  ? I
+  : never;
+
 export interface Diagnosis {
   code: string;
   name: string;
@@ -25,7 +36,7 @@ interface BaseEntry {
   diagnosisCodes?: Array<Diagnosis["code"]>;
 }
 
-interface Discharge {
+export interface Discharge {
   date: string;
   criteria: string;
 }
